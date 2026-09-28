@@ -156,16 +156,11 @@ public enum ABCLabelMasks {
 Вместо того, чтобы сравнивать строки. 
 
 ```java
-public enum ABCLabelMasks {
-    ABC_DE(ABC_DE_REGEXP, s -> extract(ABC_DE_REGEXP, s)),
-    ABC(ABC_REGEXP, s -> extract(ABC_REGEXP, s));
-
-    static final EnumMap<ABCLabelMasks, List<ABCLabelMasks>> maskMatches= new EnumMap<>(Map.of(
+static final EnumMap<ABCLabelMasks, List<ABCLabelMasks>> maskMatches= new EnumMap<>(Map.of(
             ABC, List.of(ABC, ABC_DE)
     ));  
 
     public boolean matches(ABCLabelMasks maskToMatch) {
         return maskMatches.containsKey(maskToMatch) && maskMatches.get(maskToMatch).contains(this);
     }
-}
 ```
